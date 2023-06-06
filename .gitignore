@@ -16,4 +16,4 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-ala.txt
+/resources/js/node_modules
