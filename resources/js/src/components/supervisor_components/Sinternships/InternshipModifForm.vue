@@ -12,7 +12,7 @@
             class="block uppercase text-gray-700 text-xs font-bold mb-2"
             for="intern-title"
           >
-            Internship Title
+            <i class="fas fa-book-open"></i> Internship Title
           </label>
           <!--input field with bg-white and border-gray-200 text-gray-300-->
           <input
@@ -35,7 +35,7 @@
             class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             for="duration"
           >
-            Duration
+            <i class="fas fa-clock"></i> Duration
           </label>
           <input
             v-model="this.duration"
@@ -58,7 +58,7 @@
             class="block uppercase text-gray-700 text-xs font-bold mb-2"
             for="deadline"
           >
-            Deadline
+            <i class="fas fa-calendar-alt"></i> Deadline
           </label>
           <input
             v-model="this.deadline"
@@ -78,7 +78,7 @@
             class="block uppercase text-gray-700 text-xs font-bold mb-2"
             for="offer-image"
           >
-            Offer Image
+            <i class="fas fa-image"></i> Offer Image
           </label>
           <input
             class="appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-200"
@@ -94,7 +94,7 @@
         class="block uppercase text-gray-700 text-xs font-bold mb-2"
         for="Description"
       >
-        Description
+        <i class="fas fa-align-left"></i> Description
       </label>
       <textarea
         v-model="this.description"
@@ -114,7 +114,7 @@
           class="bg-primary hover:bg-cyan-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline rounded-md"
           type="submit"
         >
-          Submit
+            <i class="fas fa-save"></i> Save
         </button>
 
         <!-- //delete button -->
@@ -123,7 +123,7 @@
           type="button"
           @click="deleteInternship"
         >
-          Delete
+            <i class="fas fa-trash-alt"></i> Delete
         </button>
 
         <router-link to="/supervisor-internships">
@@ -131,7 +131,7 @@
             class="bg-white border-2 hover:border-primary text-black font-bold py-2 px-4 focus:outline-none focus:shadow-slate-500 rounded-md"
             type="button"
           >
-            Cancel
+                <i class="fas fa-times"></i> Cancel
           </button>
         </router-link>
       </div>

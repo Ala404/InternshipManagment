@@ -1,5 +1,5 @@
 <template>
-  <div class="px-auto max-sm:p-0">
+  <div class="px-auto max-sm:p-0" v-if="applications.length!==0">
 
 
     <div class="flex justify-between mb-12 w-3/4 mx-auto">
@@ -37,10 +37,11 @@
 </div>
 
 <div class="px-auto max-sm:p-0">
-      <div
-        class="grid grid-cols-4 gap-40 font-bold text-center text-primary mb-2 bg-gray-300 rounded p-2"
+    <div
+        class="grid grid-cols-3 gap-56 font-bold text-center text-primary mb-2 bg-gray-300 rounded p-2 pl-56" v-if="applications.length!==0"
+
       >
-        <div>Image</div>
+
         <div>Title</div>
         <div>Status</div>
         <div>Action</div>
@@ -165,8 +166,8 @@ export default {
           this.applications = response.data;
         });
     }
-    
-      
+
+
 
   },
 };

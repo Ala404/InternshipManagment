@@ -6,7 +6,7 @@
     >
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="date">
-          Date
+          <i class="fas fa-calendar-alt"></i> Date
         </label>
         <input
           v-model="date"
@@ -21,7 +21,7 @@
           class="block text-gray-700 text-sm font-bold mb-2"
           for="startHour"
         >
-          Start Hour
+          <i class="fas fa-clock"></i> Start Hour
         </label>
         <input
           v-model="startHour"
@@ -36,7 +36,7 @@
           class="block text-gray-700 text-sm font-bold mb-2"
           for="finishingHour"
         >
-          Finishing Hour
+          <i class="fas fa-clock"></i> Finishing Hour
         </label>
         <input
           v-model="finishingHour"
@@ -48,7 +48,7 @@
       </div>
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="notes">
-          Notes
+            <i class="fas fa-sticky-note"></i> Notes
         </label>
         <textarea
           v-model="notes"
@@ -62,16 +62,16 @@
           class="bg-primary hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="submit"
         >
-          Submit
+          <i class="fas fa-paper-plane"></i> Send
         </button>
 
           <!--back-->
        <router-link to="/interns" >
             <button
               class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              
+
             >
-              Back
+                <i class="fas fa-arrow-left"></i> Back
             </button>
        </router-link>
       </div>
@@ -96,7 +96,7 @@
 </transition>
   </div>
 </template>
-  
+
   <script>
 import axios from "axios";
 export default {
@@ -144,8 +144,7 @@ export default {
   },
 };
 </script>
-  
+
   <style>
 /* Add any custom styling for your form component here, using Tailwind CSS */
 </style>
-  

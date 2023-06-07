@@ -28,6 +28,7 @@
           <h2 class="text-2xl font-bold mb-4">Student Points</h2>
           <div class="mb-4" v-for="(label, index) in labels" :key="index">
             <label class="block text-gray-700 text-sm font-bold mb-2" :for="index">
+              <i class="fa-solid fa-circle text-primary mr-2"></i>
               {{ label }}:
             </label>
             <select
@@ -45,7 +46,7 @@
               class="bg-primary hover:bg-cyan-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"
             >
-              Submit
+              <i class="fa-solid fa-check text-white mr-2"></i> Submit
             </button>
 
             <!--back-->
@@ -54,7 +55,7 @@
                   class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
 
                 >
-                  Back
+                  <i class="fa-solid fa-arrow-left text-white mr-2"></i> Back
                 </button>
            </router-link>
           </div>
@@ -114,7 +115,7 @@ export default {
       axios
         .post("http://localhost:8000/api/marquerNotes", {
               id: this.$route.params.id,
-          
+
           discipline: parseInt(this.skills[this.labels[0]]),
           attitude:  parseInt(this.skills[this.labels[1]]),
           initiative:  parseInt(this.skills[this.labels[2]]),

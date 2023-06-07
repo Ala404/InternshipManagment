@@ -16,7 +16,7 @@
                 <span class="text-gray-500 text-2xl">No internships yet</span>
             </div>
         </div>
-     
+
       <InternshipCard
         @click="getIntership"
         :to="`/admin-internships/${internship.id_offre}`"
@@ -27,10 +27,11 @@
         :deadline="internship.deadline"
         :duration="internship.duree"
         :description="internship.description"
+        :address="internship.addresse_entreprise"
       />
     </div>
 
-   
+
   </div>
 </template>
 
@@ -50,9 +51,9 @@ export default {
       internships: [],
       showOfferForm: false,
       companiesImages: [
-       
+
         'http://www.ooredoo.dz/Ooredoo/Satellite?blobcol=urldata&blobheader=image%2Fpng&blobkey=id&blobnocache=false&blobtable=MungoBlobs&blobwhere=1464606283207&ssbinary=true',
-        
+
     ],
     };
   },
@@ -75,7 +76,7 @@ export default {
         console.log(error);
       });
 
-    //   //getting random profile pictures 
+    //   //getting random profile pictures
     // axios
     //   .get("xsgames.co/randomusers/avatar.php?g=male")
     //   .then((response) => {

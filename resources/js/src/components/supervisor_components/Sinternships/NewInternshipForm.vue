@@ -1,7 +1,7 @@
 <template>
   <div class="mx-auto py-4 font-sans text-center">
     <h1 class="text-5xl font-bold mb-16 text-primary">
-      New Internship 
+      New Internship
     </h1>
 
     <form class=" w-full px-40 max-sm:p-0 " @submit.prevent="validateForm">
@@ -14,7 +14,7 @@
             class="block uppercase text-gray-700 text-xs font-bold mb-2"
             for="intern-title"
           >
-            Internship Title
+            <i class="fas fa-book-open"></i> Internship Title
           </label>
           <!--input field with bg-white and border-gray-200 text-gray-300-->
           <input
@@ -38,7 +38,7 @@
             class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             for="duration"
           >
-            Duration
+            <i class="fas fa-clock"></i> Duration
           </label>
           <input
             v-model="this.duration"
@@ -52,19 +52,19 @@
           </span>
         </div>
       </div>
-     
+
 
       <!--       -->
-      
 
-       
+
+
 
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 mx-auto">
           <label
             class="block uppercase text-gray-700 text-xs font-bold mb-2"
             for="deadline"
           >
-            Deadline
+            <i class="fas fa-calendar-alt"></i> Deadline
           </label>
           <input
             v-model="this.deadline"
@@ -77,14 +77,14 @@
             >{{ v$.deadline.$errors[0].$message }}
           </span>
         </div>
-   
+
       <div class="flex flex-wrap mb-6">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 mx-auto">
           <label
             class="block uppercase text-gray-700 text-xs font-bold mb-2"
             for="Description"
           >
-            Description
+             <i class="fas fa-align-left"></i> Description
           </label>
           <textarea
             v-model="this.description"
@@ -97,9 +97,9 @@
             >{{ v$.description.$errors[0].$message }}
           </span>
         </div>
-     
+
       </div>
-        
+
       <!-- offer image -->
       <div class="flex flex-wrap mb-6">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 mx-auto">
@@ -107,27 +107,27 @@
             class="block uppercase text-gray-700 text-xs font-bold mb-2"
             for="offer-image"
           >
-            Offer Image
+            <i class="fas fa-image"></i> Offer Image
           </label>
           <input
-            
+
             class="appearance-none block  w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-200"
             id="offer-image"
             type="file"
             placeholder="Enter offer image"
           />
-         
+
         </div>
       </div>
 
-      
 
-     
-     
 
-     
 
-     
+
+
+
+
+
       <!--submit button and cancel button-->
 
       <div class="flex flex-wrap w-1/2 justify-evenly px-3 max-md:w-full mx-auto">
@@ -135,7 +135,7 @@
           class="bg-primary hover:bg-cyan-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline rounded-md"
           type="submit"
         >
-          Submit
+           <i class="fas fa-paper-plane"></i> Submit
         </button>
 
         <router-link to="/supervisor-internships">
@@ -143,7 +143,7 @@
             class="bg-white border-2 hover:border-primary text-black font-bold py-2 px-4 focus:outline-none focus:shadow-slate-500 rounded-md"
             type="button"
           >
-            Cancel
+           <i class="fas fa-times"></i> Cancel
           </button>
         </router-link>
       </div>
@@ -221,7 +221,7 @@ export default {
       deadline: "",
       photo: "",
 
-  
+
     };
   },
 
@@ -250,7 +250,7 @@ export default {
     };
   },
   methods: {
-    
+
     validateForm() {
       let cd = new Date().setHours(0, 0, 0, 0);
       const dateDebut = new Date(this.startDate).setHours(0, 0, 0, 0);
@@ -267,7 +267,7 @@ export default {
       else{
         this.dateDbFError = ''
         console.log(this.dateDbFError);
-        
+
       }
       this.v$.$validate();
       if (!this.v$.$error) {

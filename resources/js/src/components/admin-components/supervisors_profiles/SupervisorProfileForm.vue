@@ -1,217 +1,217 @@
 <template>
-  <div>
-    <!-- creating a form to update the profile -->
-    <form
-      class="flex flex-col w-full mx-auto px-20 max-md:text-center"
-      @submit.prevent=""
-    >
-      <div class="flex flex-wrap justify-center mb-6">
-        <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="first-name">First Name</label>
-          <input
-            type="text"
-            id="first"
-            placeholder="First Name"
-            class="border-2 border-gray-300 p-2 rounded-lg block w-full"
-            v-model="this.profileData[0].prenom_responsable"
-          />
-          <!--error msg for prenom using vuevalidator v$.error and v$.errors -->
-          <span
-            class="text-red-500 text-xs italic"
-            v-if="v$.profileData[0].prenom_responsable.$error"
-            >{{ v$.profileData[0].prenom_responsable.$errors[0].$message }}
-          </span>
-        </div>
-
-      </div>
-      
-      <div class="flex flex-wrap justify-center mb-6">
-        <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="last-name">Last Name</label>
-          <input
-            type="text"
-            id="last"
-            placeholder="Last Name"
-            class="border-2 border-gray-300 p-2 rounded-lg block w-full"
-            v-model="this.profileData[0].nom_responsable"
-          />
-          <!--error msg -->
-          <span
-            class="text-red-500 text-xs italic"
-            v-if="v$.profileData[0].nom_responsable.$error"
-            >{{ v$.profileData[0].nom_responsable.$errors[0].$message }}
-          </span>
-        </div>
-      </div>
-      <div class="flex flex-wrap justify-center mb-6">
-        <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            placeholder="Email"
-            class="border-2 border-gray-300 p-2 rounded-lg block w-full"
-            v-model="this.profileData[0].email"
-          />
-          <span
-            class="text-red-500 text-xs italic"
-            v-if="v$.profileData[0].email.$error"
-            >{{ v$.profileData[0].email.$errors[0].$message }}
-          </span>
-        </div>
-        </div>
-
-        <!--company info-->
-     <div class="flex flex-wrap justify-center mb-6">
-        <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="university">Company Name</label>
-          <input
-            type="text"
-            id="university"
-            placeholder="Company Name"
-            class="border-2 border-gray-300 p-2 rounded-lg block w-full"
-            v-model="this.profileData[0].nom_entreprise"
-          />
-          <span
-            class="text-red-500 text-xs italic"
-            v-if="v$.profileData[0].nom_entreprise.$error"
-            >{{ v$.profileData[0].nom_entreprise.$errors[0].$message }}
-          </span>
-        </div>
-        
-     </div>
-     <div class="flex flex-wrap justify-center mb-6">
-        <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="phone">Company Phone</label>
-          <input
-            type="text"
-            id="phone"
-            placeholder="Company Phone"
-            class="border-2 border-gray-300 p-2 rounded-lg block w-full"
-            v-model="this.profileData[0].tel_entreprise"
-          />
-          <span
-            class="text-red-500 text-xs italic"
-            v-if="v$.profileData[0].tel_entreprise.$error"
-            >{{ v$.profileData[0].tel_entreprise.$errors[0].$message }}
-          </span>
-        </div>
-      </div>
-
-    
-      <!--department and speciality-->
-      <div class="flex flex-wrap justify-center mb-6">
-        <div class="flex flex-col w-full md:w-1/2 px-3 my-6 md:mb-0">
-          <label for="address">Company Address</label>
-          <input
-            type="text"
-            id="address"
-            placeholder="Company Address"
-            class="border-2 border-gray-300 p-2 rounded-lg block w-full"
-            v-model="this.profileData[0].addresse_entreprise"
-          />
-          <span
-            class="text-red-500 text-xs italic"
-            v-if="v$.profileData[0].addresse_entreprise.$error"
-            >{{ v$.profileData[0].addresse_entreprise.$errors[0].$message }}
-          </span>
-        </div>
-       
-      </div>
-   
-        
-
-      <!--birthday and birth address-->
-
-    
-
-      <!--update and cancel-->
-      <div class="flex flex-wrap justify-center  w-1/2 mb-6 mx-auto">
-        <div class="flex flex-col w-1/2  max-md:w-full px-3 mb-6 md:mb-0">
-          <button
-            type="submit"
-            class="bg-primary text-white px-4 py-2 rounded font-medium w-full"
-            @click="this.showshowConfirmationDialogFunc" 
-          >
-            Update
-          </button>
-        </div>
-
-        <!--delete account-->
-        <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <button
-            type="button"
-            class="bg-red-500 text-white px-4 py-2 rounded font-medium w-full"
-            @click="this.showDeleteConfirmationDialogFunc"
-          >
-            Delete
-          </button>
-        </div>
-
-        <router-link
-          to="/admin-supervisor-profiles"
-          class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0"
-        >
-          <button
-            type="button"
-            class="bg-orange-500 text-white px-4 py-2 rounded font-medium w-full my-2"
-          >
-            Cancel
-          </button>
-        </router-link>
-      </div>
-      
-    </form>
-    <transition name="scale-up">
-  <div v-if="showConfirmationDialog" class="fixed inset-0 flex items-center justify-center z-50">
-    <div class="confirmation-popup bg-white w-1/3 p-4 rounded shadow">
-      <h2 class="text-lg font-medium mb-4">Confirmation</h2>
-      <p class="mb-4">Are you sure you want to proceed?</p>
-      <div class="flex justify-end">
-        <button class="bg-red-500 text-white px-4 py-2 rounded font-medium mr-2" @click="showConfirmationDialog = false">Cancel</button>
-        <button class="bg-primary text-white px-4 py-2 rounded font-medium" @click="submitProfileData">Confirm</button>
-      </div>
-    </div>
-  </div>
-</transition>
-
-  
-<!-- success dialog -->
-<transition class="scale-up">
-  <div v-if="showSuccessDialog" class="success-popup fixed inset-0 flex items-center text-center justify-center z-50 bg-black bg-opacity-50">
-        <div class="bg-white w-1/3 p-4 rounded shadow">
-        
-            <div>
-              <i class="fa-solid fa-check text-green-500 text-6xl fa-bounce rounded-full border-2 border-green-500"></i>
-            </div>
-       
-          <h2 class="text-lg font-medium mb-4">Success</h2>
-          <p class="mb-4">Profile updated successfully</p>
-         
-          <div class="flex justify-end">
-            <button class="bg-primary text-white px-4 py-2 rounded font-medium" @click="showSuccessDialog = false">OK</button>
+    <div>
+      <!-- creating a form to update the profile -->
+      <form class="flex flex-col w-full mx-auto px-20 max-md:text-center" @submit.prevent="">
+        <div class="flex flex-wrap justify-center mb-6">
+          <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label for="first-name">
+              <i class="fas fa-user"></i> First Name
+            </label>
+            <input
+              type="text"
+              id="first"
+              placeholder="First Name"
+              class="border-2 border-gray-300 p-2 rounded-lg block w-full"
+              v-model="this.profileData[0].prenom_responsable"
+            />
+            <!--error msg for prenom using vuevalidator v$.error and v$.errors -->
+            <span
+              class="text-red-500 text-xs italic"
+              v-if="v$.profileData[0].prenom_responsable.$error"
+              >{{ v$.profileData[0].prenom_responsable.$errors[0].$message }}</span>
           </div>
-        </div>
-      </div>
-</transition>
+    </div>
 
-<!-- delete confirmation dialog --> 
-<transition name="scale-up">
-  <div v-if="showDeleteConfirmationDialog" class="fixed inset-0 flex items-center justify-center z-50">
-    <div class="confirmation-popup bg-white w-1/3 p-4 rounded shadow">
-      <h2 class="text-lg font-medium mb-4">Confirmation</h2>
-      <p class="mb-4">Are you sure you want to delete this account?</p>
-      <div class="flex justify-end">
-        <button class="bg-red-500 text-white px-4 py-2 rounded font-medium mr-2" @click="showDeleteConfirmationDialog = false">Cancel</button>
-        <button class="bg-primary text-white px-4 py-2 rounded font-medium" @click="deleteAccount">Confirm</button>
+    <div class="flex flex-wrap justify-center mb-6">
+      <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label for="last-name">
+          <i class="fas fa-user"></i> Last Name
+        </label>
+        <input
+          type="text"
+          id="last"
+          placeholder="Last Name"
+          class="border-2 border-gray-300 p-2 rounded-lg block w-full"
+          v-model="this.profileData[0].nom_responsable"
+        />
+        <!--error msg -->
+        <span
+          class="text-red-500 text-xs italic"
+          v-if="v$.profileData[0].nom_responsable.$error"
+          >{{ v$.profileData[0].nom_responsable.$errors[0].$message }}</span>
       </div>
     </div>
+    <div class="flex flex-wrap justify-center mb-6">
+      <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label for="email">
+          <i class="fas fa-envelope"></i> Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Email"
+          class="border-2 border-gray-300 p-2 rounded-lg block w-full"
+          v-model="this.profileData[0].email"
+        />
+        <span
+          class="text-red-500 text-xs italic"
+          v-if="v$.profileData[0].email.$error"
+          >{{ v$.profileData[0].email.$errors[0].$message }}</span>
+      </div>
+      </div>
+
+      <!--company info-->
+   <div class="flex flex-wrap justify-center mb-6">
+      <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label for="university">
+          <i class="fas fa-building"></i> Company Name
+        </label>
+        <input
+          type="text"
+          id="university"
+          placeholder="Company Name"
+          class="border-2 border-gray-300 p-2 rounded-lg block w-full"
+          v-model="this.profileData[0].nom_entreprise"
+        />
+        <span
+          class="text-red-500 text-xs italic"
+          v-if="v$.profileData[0].nom_entreprise.$error"
+          >{{ v$.profileData[0].nom_entreprise.$errors[0].$message }}</span>
+      </div>
+
+   </div>
+   <div class="flex flex-wrap justify-center mb-6">
+      <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label for="phone">
+          <i class="fas fa-phone"></i> Company Phone
+        </label>
+        <input
+          type="text"
+          id="phone"
+          placeholder="Company Phone"
+          class="border-2 border-gray-300 p-2 rounded-lg block w-full"
+          v-model="this.profileData[0].tel_entreprise"
+        />
+        <span
+          class="text-red-500 text-xs italic"
+          v-if="v$.profileData[0].tel_entreprise.$error"
+          >{{ v$.profileData[0].tel_entreprise.$errors[0].$message }}</span>
+      </div>
+    </div>
+
+
+    <!--department and speciality-->
+    <div class="flex flex-wrap justify-center mb-6">
+      <div class="flex flex-col w-full md:w-1/2 px-3 my-6 md:mb-0">
+        <label for="address">
+          <i class="fas fa-address-card"></i> Company Address
+        </label>
+        <input
+          type="text"
+          id="address"
+          placeholder="Company Address"
+          class="border-2 border-gray-300 p-2 rounded-lg block w-full"
+          v-model="this.profileData[0].addresse_entreprise"
+        />
+        <span
+          class="text-red-500 text-xs italic"
+          v-if="v$.profileData[0].addresse_entreprise.$error"
+          >{{ v$.profileData[0].addresse_entreprise.$errors[0].$message }}</span>
+      </div>
+
+    </div>
+
+
+
+    <!--birthday and birth address-->
+
+
+
+    <!--update and cancel-->
+    <div class="flex flex-wrap justify-center  w-1/2 mb-6 mx-auto">
+      <div class="flex flex-col w-1/2  max-md:w-full px-3 mb-6 md:mb-0">
+        <button
+          type="submit"
+          class="bg-primary text-white px-4 py-2 rounded font-medium w-full"
+          @click="this.showshowConfirmationDialogFunc"
+        >
+          Update
+        </button>
+      </div>
+
+      <!--delete account-->
+      <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <button
+          type="button"
+          class="bg-red-500 text-white px-4 py-2 rounded font-medium w-full"
+          @click="this.showDeleteConfirmationDialogFunc"
+        >
+          Delete
+        </button>
+      </div>
+
+      <router-link
+        to="/admin-supervisor-profiles"
+        class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0"
+      >
+        <button
+          type="button"
+          class="bg-orange-500 text-white px-4 py-2 rounded font-medium w-full my-2"
+        >
+          Cancel
+        </button>
+      </router-link>
+    </div>
+
+  </form>
+  <transition name="scale-up">
+    <div v-if="showConfirmationDialog" class="fixed inset-0 flex items-center justify-center z-50">
+      <div class="confirmation-popup bg-white w-1/3 p-4 rounded shadow">
+        <h2 class="text-lg font-medium mb-4">Confirmation</h2>
+        <p class="mb-4">Are you sure you want to proceed?</p>
+        <div class="flex justify-end">
+          <button class="bg-red-500 text-white px-4 py-2 rounded font-medium mr-2" @click="showConfirmationDialog = false">Cancel</button>
+          <button class="bg-primary text-white px-4 py-2 rounded font-medium" @click="submitProfileData">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </transition>
+  <!-- success dialog -->
+  <transition class="scale-up">
+    <div v-if="showSuccessDialog" class="success-popup fixed inset-0 flex items-center text-center justify-center z-50 bg-black bg-opacity-50">
+      <div class="bg-white w-1/3 p-4 rounded shadow">
+  php
+  Copy code
+    <div>
+      <i class="fa-solid fa-check text-green-500 text-6xl fa-bounce rounded-full border-2 border-green-500"></i>
+    </div>
+
+    <h2 class="text-lg font-medium mb-4">Success</h2>
+    <p class="mb-4">Profile updated successfully</p>
+
+    <div class="flex justify-end">
+      <button class="bg-primary text-white px-4 py-2 rounded font-medium" @click="showSuccessDialog = false">OK</button>
+    </div>
   </div>
-</transition>
-  </div>
-</template>
-  
-    
+    </div>
+  </transition>
+  <!-- delete confirmation dialog -->
+  <transition name="scale-up">
+    <div v-if="showDeleteConfirmationDialog" class="fixed inset-0 flex items-center justify-center z-50">
+      <div class="confirmation-popup bg-white w-1/3 p-4 rounded shadow">
+        <h2 class="text-lg font-medium mb-4">Confirmation</h2>
+        <p class="mb-4">Are you sure you want to delete this account?</p>
+        <div class="flex justify-end">
+          <button class="bg-red-500 text-white px-4 py-2 rounded font-medium mr-2" @click="showDeleteConfirmationDialog = false">Cancel</button>
+          <button class="bg-primary text-white px-4 py-2 rounded font-medium" @click="deleteAccount">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </transition>
+    </div>
+  </template>
+
+
     <script>
 import { useVuelidate } from "@vuelidate/core";
 import {
@@ -252,7 +252,7 @@ export default {
           tel_entreprise: "",
           addresse_entreprise: "",
           email: "",
-         
+
         },
       ],
       passwordVisible: false,
@@ -260,7 +260,7 @@ export default {
   },
   validations() {
     return {
-      
+
       profileData: [
         {
           nom_responsable: { required },
@@ -269,8 +269,8 @@ export default {
           addresse_entreprise: { required },
           tel_entreprise: { required, numeric },
           email: { required, email },
-          
-        
+
+
         },
       ],
     };
@@ -281,7 +281,7 @@ export default {
       this.showDeleteConfirmationDialog = true;
     },
     showshowConfirmationDialogFunc() {
-    
+
     if (!this.v$.$error ) {
     this.showConfirmationDialog = true;
 
@@ -289,7 +289,7 @@ export default {
     },
 
     submitProfileData() {
-   
+
       this.v$.$validate();
       console.log(this.v$.$errors);
       if (!this.v$.$error) {
@@ -312,7 +312,7 @@ export default {
             nom: this.profileData[0].nom_entreprise,
             tel: this.profileData[0].tel_entreprise,
             email: this.profileData[0].email,
-            
+
           }
         )
         .then((response) => {
@@ -324,12 +324,12 @@ export default {
                 this.showSuccessDialog = false;
               window.location.reload();
             }, 1000);
-       
+
           console.log("after");
         })
         .catch(function (error) {
           console.log(error);
-        
+
         });
     },
     togglePasswordVisibility() {
@@ -338,7 +338,7 @@ export default {
 
    async deleteAccount() {
              await axios
-                .delete("http://localhost:8000/api/deleteRes", 
+                .delete("http://localhost:8000/api/deleteRes",
                   { params: { id: this.$route.params.id } }
                 )
                 .then((response) => {
@@ -379,7 +379,7 @@ export default {
   },
 };
 </script>
-    
+
     <style lang="scss" scoped>
 label {
   color: #3a96b4;
@@ -403,6 +403,5 @@ Dropdown {
   outline: none;
 }
 </style>
-    
-    
-    
+
+

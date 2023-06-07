@@ -6,18 +6,18 @@
         alt="Pic"
         class=" h-12 object-cover rounded-full"
       />
-     
+
         <span>
-          <h2 class="text-sm font-semibold">{{ firstName }} {{ lastName }}</h2>
+          <h2 class="text-md font-bold"> <i class="fas fa-user mr-2"></i> {{ firstName }} {{ lastName }}</h2>
         </span>
         <span
           ><p class="text-white bg-orange-500 rounded-full text-center pt-1 h-8 w-8">{{ finalPoints }}</p>
           </span>
-      
+
     </div>
   </div>
 </template>
-  
+
   <script>
 export default {
   props: {
@@ -28,6 +28,5 @@ export default {
   },
 };
 </script>
-  
 
-  
+

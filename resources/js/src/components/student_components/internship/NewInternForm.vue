@@ -82,7 +82,7 @@
             class="block uppercase text-gray-700 text-xs font-bold mb-2"
             for="first-name"
           >
-            First Name
+          Supervisor First Name
           </label>
           <input
             v-model="supervisorFName"
@@ -100,12 +100,13 @@
       </div>
       <!--       -->
 
-      <div class="flex flex-wrap w-full md:w-1/2 px-3 mb-8 md:mb-0">
+      <div class="flex flex-wrap mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <label
           class="block uppercase mx-auto text-gray-700 text-xs font-bold mb-2"
           for="last-name"
         >
-          Last Name
+        Supervisor Last Name
         </label>
         <input
           v-model="supervisorLName"
@@ -122,8 +123,7 @@
       </div>
 
       <!--company info -->
-      <div class="flex flex-wrap w-full my-6">
-        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <div class="w-full md:w-1/2 px-3">
           <label
             class="block uppercase mx-auto text-gray-700 text-xs font-bold mb-2"
             for="company-name"
@@ -141,7 +141,10 @@
             >{{ v$.companyName.$errors[0].$message }}
           </span>
         </div>
+        </div>
+        <!--       -->
 
+        <div class="flex flex-wrap mb-6">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
           <label
             class="block uppercase mx-auto text-gray-700 text-xs font-bold mb-2"
@@ -162,9 +165,8 @@
             >{{ v$.companyAddress.$errors[0].$message }}
           </span>
         </div>
-      </div>
 
-      <div class="w-full md:w-1/2 px-3 mb-6">
+      <div class="w-full md:w-1/2 px-3">
         <label
           class="block uppercase mx-auto text-gray-700 text-xs font-bold mb-2"
           for="company-phone"
@@ -182,6 +184,7 @@
           >{{ v$.companyPhone.$errors[0].$message }}
         </span>
       </div>
+    </div>
 
       <div class="flex flex-wrap mb-6">
         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -228,9 +231,10 @@
       <!--       -->
       <!--submit button and cancel button-->
 
-      <div class="flex flex-wrap w-1/2 justify-evenly px-3 max-md:w-full">
+      <div class="flex flex-wrap mb-6 ">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 mx-auto ">
         <button
-          class="bg-primary hover:bg-cyan-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline rounded-md"
+          class="bg-primary hover:bg-cyan-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline rounded-md mr-32"
           type="submit"
           @click="showConfirmationDialogFunc"
         >
@@ -246,6 +250,7 @@
           </button>
         </router-link>
       </div>
+        </div>
     </form>
     <transition name="scale-up">
   <div v-if="showConfirmationDialog" class="fixed inset-0 flex items-center justify-center z-50">

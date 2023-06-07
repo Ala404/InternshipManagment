@@ -1,24 +1,25 @@
 <template>
     <div>
-        
+        <router-link to="/admin-supervisor-profiles"><span class="absolute top-4 left-4 text-orange-600 text-lg font-semibold ">Supervisors Points</span></router-link>
+
     <div v-if="supervisors.length === 0" class="text-center text-gray-500 py-32">
       <i class="fas fa-user fa-3x text-secondary"></i>
       <h1 class="text-2xl font-bold">No supervisors</h1>
     </div>
       <div v-if="isLoading">Loading...</div>
       <div v-else>
-        
+
           <SupervisorProfileCard v-for="supervisor in supervisors" :key="supervisor.id_responsable" :id="supervisor.id_responsable"
            :supervisor="supervisor" :firstName="supervisor.prenom_responsable" :lastName="supervisor.nom_responsable" :profilePictureUrl="pplImages[Math.floor(Math.random() * pplImages.length)]"  />
-        
+
       </div>
     </div>
   </template>
-  
+
   <script>
   import axios from 'axios'
   import SupervisorProfileCard from '@/components/admin-components/supervisors_profiles/SupervisorProfileCard.vue'
-  
+
   export default {
     components: {
       SupervisorProfileCard
@@ -61,8 +62,7 @@
     }
   }
   </script>
-  
+
   <style>
   /* Add any custom styling for your website here, using Tailwind CSS */
   </style>
-  

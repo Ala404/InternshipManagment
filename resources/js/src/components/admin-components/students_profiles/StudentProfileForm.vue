@@ -1,282 +1,282 @@
 <template>
-  <div>
-    <!-- creating a form to update the profile -->
-    <form
-      class="flex flex-col w-full mx-auto px-20 max-md:text-center"
-      @submit.prevent=""
-    >
-      <div class="flex flex-wrap mb-6">
-        <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="first-name">First Name</label>
-          <input
-            type="text"
-            id="first"
-            placeholder="First Name"
-            class="border-2 border-gray-300 p-2 rounded-lg block w-full"
-            v-model="this.profileData[0].prenom_etudiant"
-          />
-          <!--error msg for prenom using vuevalidator v$.error and v$.errors -->
-          <span
-            class="text-red-500 text-xs italic"
-            v-if="v$.profileData[0].prenom_etudiant.$error"
-            >{{ v$.profileData[0].prenom_etudiant.$errors[0].$message }}
-          </span>
-        </div>
-
-        <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="last-name">Last Name</label>
-          <input
-            type="text"
-            id="last"
-            placeholder="Last Name"
-            class="border-2 border-gray-300 p-2 rounded-lg block w-full"
-            v-model="this.profileData[0].nom_etudiant"
-          />
-          <!--error msg -->
-          <span
-            class="text-red-500 text-xs italic"
-            v-if="v$.profileData[0].nom_etudiant.$error"
-            >{{ v$.profileData[0].nom_etudiant.$errors[0].$message }}
-          </span>
-        </div>
-      </div>
-      <div class="flex flex-wrap mb-6">
-        <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            placeholder="Email"
-            class="border-2 border-gray-300 p-2 rounded-lg block w-full"
-            v-model="this.profileData[0].email"
-            disabled
-          />
-          <span
-            class="text-red-500 text-xs italic"
-            v-if="v$.profileData[0].email.$error"
-            >{{ v$.profileData[0].email.$errors[0].$message }}
-          </span>
-        </div>
-
-        <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="phone">Phone</label>
-          <input
-            type="text"
-            id="phone"
-            placeholder="Phone"
-            class="border-2 border-gray-300 p-2 rounded-lg block w-full"
-            v-model="this.profileData[0].tel_etudiant"
-          />
-          <span
-            class="text-red-500 text-xs italic"
-            v-if="v$.profileData[0].tel_etudiant.$error"
-            >{{ v$.profileData[0].tel_etudiant.$errors[0].$message }}
-          </span>
-        </div>
-      </div>
-
-      <!--university and faculty-->
-      <!-- <div class="flex flex-wrap mb-6">
+    <div>
+      <!-- creating a form to update the profile -->
+      <form
+        class="flex flex-col w-full mx-auto px-20 max-md:text-center"
+        @submit.prevent=""
+      >
+        <div class="flex flex-wrap mb-6">
           <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label for="university">University</label>
+            <label for="first-name">
+              <i class="fas fa-user"></i> First Name
+            </label>
             <input
               type="text"
-              id="university"
-              placeholder="University"
+              id="first"
+              placeholder="First Name"
               class="border-2 border-gray-300 p-2 rounded-lg block w-full"
-              v-model="this.profileData[0].nom_universite"
+              v-model="this.profileData[0].prenom_etudiant"
             />
+            <!--error msg for prenom using vuevalidator v$.error and v$.errors -->
+            <span
+              class="text-red-500 text-xs italic"
+              v-if="v$.profileData[0].prenom_etudiant.$error"
+              >{{ v$.profileData[0].prenom_etudiant.$errors[0].$message }}
+            </span>
           </div>
+
           <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label for="faculty">Faculty</label>
-            <select
-              v-model="this.profileData[0].selectedFaculty"
+            <label for="last-name">
+              <i class="fas fa-user"></i> Last Name
+            </label>
+            <input
+              type="text"
+              id="last"
+              placeholder="Last Name"
               class="border-2 border-gray-300 p-2 rounded-lg block w-full"
-            >
-              <option
-                v-for="faculty in faculties"
-                :key="faculty.name"
-                :value="faculty.name"
-              >
-                {{ faculty.name }}
-              </option>
-            </select>
+              v-model="this.profileData[0].nom_etudiant"
+            />
+            <!--error msg -->
+            <span
+              class="text-red-500 text-xs italic"
+              v-if="v$.profileData[0].nom_etudiant.$error"
+              >{{ v$.profileData[0].nom_etudiant.$errors[0].$message }}
+            </span>
           </div>
-        </div> -->
-      <!--department and speciality-->
-      <div class="flex flex-wrap mb-6">
-        <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="reg">Registration Number</label>
-          <input
-            type="text"
-            id="reg"
-            placeholder="Registration Number"
-            class="border-2 border-gray-300 p-2 rounded-lg block w-full"
-            v-model="this.profileData[0].num_carte"
-          />
-          <span
-            class="text-red-500 text-xs italic"
-            v-if="v$.profileData[0].num_carte.$error"
-            >{{ v$.profileData[0].num_carte.$errors[0].$message }}
-          </span>
         </div>
-        <!-- <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="department">Department</label>
-          <select
-            v-model="this.profileData[0].nom_departement"
-            class="border-2 border-gray-300 p-2 rounded-lg block w-full"
-          >
-            <option
-              v-for="department in departments"
-              :key="department.name"
-              :value="department.name"
+        <div class="flex flex-wrap mb-6">
+          <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label for="email">
+              <i class="fas fa-envelope"></i> Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Email"
+              class="border-2 border-gray-300 p-2 rounded-lg block w-full"
+              v-model="this.profileData[0].email"
+              disabled
+            />
+            <span
+              class="text-red-500 text-xs italic"
+              v-if="v$.profileData[0].email.$error"
+              >{{ v$.profileData[0].email.$errors[0].$message }}
+            </span>
+          </div>
+
+          <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label for="phone">
+              <i class="fas fa-phone"></i> Phone
+            </label>
+            <input
+              type="text"
+              id="phone"
+              placeholder="Phone"
+              class="border-2 border-gray-300 p-2 rounded-lg block w-full"
+              v-model="this.profileData[0].tel_etudiant"
+            />
+            <span
+              class="text-red-500 text-xs italic"
+              v-if="v$.profileData[0].tel_etudiant.$error"
+              >{{ v$.profileData[0].tel_etudiant.$errors[0].$message }}
+            </span>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap mb-6">
+          <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label for="reg">
+              <i class="fas fa-id-card"></i> Registration Number
+            </label>
+            <input
+              type="text"
+              id="reg"
+              placeholder="Registration Number"
+              class="border-2 border-gray-300 p-2 rounded-lg block w-full"
+              v-model="this.profileData[0].num_carte"
+            />
+            <span
+              class="text-red-500 text-xs italic"
+              v-if="v$.profileData[0].num_carte.$error"
+              >{{ v$.profileData[0].num_carte.$errors[0].$message }}
+            </span>
+          </div>
+
+          <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label for="speciality">
+              <i class="fas fa-graduation-cap"></i> Speciality
+            </label>
+            <input
+              type="text"
+              id="speciality"
+              placeholder="Speciality"
+              class="border-2 border-gray-300 p-2 rounded-lg block w-full"
+              v-model="this.profileData[0].specialite"
+            />
+            <span
+              class="text-red-500 text-xs italic"
+              v-if="v$.profileData[0].specialite.$error"
+              >{{ v$.profileData[0].specialite.$errors[0].$message }}
+            </span>
+          </div>
+        </div>
+
+        <!--birthday and birth address-->
+        <div class="flex flex-wrap mb-6">
+          <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label for="birth">
+              <i class="fas fa-calendar-alt"></i> Birth Date
+            </label>
+            <input
+              type="date"
+              id="birth"
+              placeholder="Birth Date"
+              class="border-2 border-gray-300 p-2 rounded-lg block w-full"
+              v-model="this.profileData[0].date_naissance"
+            />
+            <span
+              class="text-red-500 text-xs italic"
+              v-if="v$.profileData[0].date_naissance.$error"
+              >{{ v$.profileData[0].date_naissance.$errors[0].$message }}
+            </span>
+          </div>
+
+          <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label for="address">
+              <i class="fas fa-map-marker-alt"></i> Birth Address
+            </label>
+            <input
+              type="address"
+              id="address"
+              placeholder="Birth Address"
+              class="border-2 border-gray-300 p-2 rounded-lg block w-full"
+              v-model="this.profileData[0].lieu_naissance"
+            />
+            <span
+              class="text-red-500 text-xs italic"
+              v-if="v$.profileData[0].lieu_naissance.$error"
+              >{{ v$.profileData[0].lieu_naissance.$errors[0].$message }}
+            </span>
+          </div>
+        </div>
+
+        <!--update and cancel-->
+        <div class="flex flex-wrap mb-6">
+          <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <button
+              type="submit"
+              class="bg-primary text-white px-4 py-2 rounded font-medium w-full"
+              @click="this.showConfirmationDialogFunc"
             >
-              {{ department.name.toLocaleUpperCase() }}
-            </option>
-          </select>
-        </div> -->
-        <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="speciality">Speciality</label>
-          <input
-            type="text"
-            id="speciality"
-            placeholder="Speciality"
-            class="border-2 border-gray-300 p-2 rounded-lg block w-full"
-            v-model="this.profileData[0].specialite"
-          />
-          <span
-            class="text-red-500 text-xs italic"
-            v-if="v$.profileData[0].specialite.$error"
-            >{{ v$.profileData[0].specialite.$errors[0].$message }}
-          </span>
-        </div>
-      </div>
-      <!--birthday and birth address-->
-      <div class="flex flex-wrap mb-6">
-        <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="birth">Birth Date</label>
-          <input
-            type="date"
-            id="birth"
-            placeholder="Birth Date"
-            class="border-2 border-gray-300 p-2 rounded-lg block w-full"
-            v-model="this.profileData[0].date_naissance"
-          />
-          <span
-            class="text-red-500 text-xs italic"
-            v-if="v$.profileData[0].date_naissance.$error"
-            >{{ v$.profileData[0].date_naissance.$errors[0].$message }}
-          </span>
-        </div>
+              <i class="fas fa-save"></i> Update
+            </button>
+          </div>
 
-        <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="address">Birth Address</label>
-          <input
-            type="address"
-            id="address"
-            placeholder="Birth Address"
-            class="border-2 border-gray-300 p-2 rounded-lg block w-full"
-            v-model="this.profileData[0].lieu_naissance"
-          />
-          <span
-            class="text-red-500 text-xs italic"
-            v-if="v$.profileData[0].lieu_naissance.$error"
-            >{{ v$.profileData[0].lieu_naissance.$errors[0].$message }}
-          </span>
-        </div>
-      </div>
-  
-  
-      
+          <!--delete -->
+          <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <button
+              type="button"
+              class="bg-red-500 text-white px-4 py-2 rounded font-medium w-full"
+              @click="this.showDeleteConfirmationDialogFunc"
+            >
+              <i class="fas fa-trash-alt"></i> Delete
+            </button>
+          </div>
 
-     
-    
-
-      <!--update and cancel-->
-      <div class="flex flex-wrap mb-6">
-        <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <button
-            type="submit"
-            class="bg-primary text-white px-4 py-2 rounded font-medium w-full"
-            @click="this.showConfirmationDialogFunc" 
+          <router-link
+            to="/admin-student-profiles"
+            class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0"
           >
-            Update
-          </button>
+            <button
+              type="button"
+              class="bg-orange-500 text-white px-4 py-2 rounded font-medium w-full my-2"
+            >
+              <i class="fas fa-times"></i> Cancel
+            </button>
+          </router-link>
         </div>
-
-        <!--delete -->
-        <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <button
-            type="button"
-            class="bg-red-500 text-white px-4 py-2 rounded font-medium w-full"
-            @click="this.showDeleteConfirmationDialogFunc"
-          >
-            Delete
-          </button>
-        </div>
-
-        <router-link
-          to="/admin-student-profiles"
-          class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0"
+      </form>
+      <transition name="scale-up">
+        <div
+          v-if="showConfirmationDialog"
+          class="fixed inset-0 flex items-center justify-center z-50"
         >
-          <button
-            type="button"
-            class="bg-orange-500 text-white px-4 py-2 rounded font-medium w-full my-2"
-          >
-            Cancel
-          </button>
-        </router-link>
-      </div>
-    </form>
-    <transition name="scale-up">
-  <div v-if="showConfirmationDialog" class="fixed inset-0 flex items-center justify-center z-50">
-    <div class="confirmation-popup bg-white w-1/3 p-4 rounded shadow">
-      <h2 class="text-lg font-medium mb-4">Confirmation</h2>
-      <p class="mb-4">Are you sure you want to proceed?</p>
-      <div class="flex justify-end">
-        <button class="bg-red-500 text-white px-4 py-2 rounded font-medium mr-2" @click="showConfirmationDialog = false">Cancel</button>
-        <button class="bg-primary text-white px-4 py-2 rounded font-medium" @click="submitProfileData">Confirm</button>
-      </div>
-    </div>
-  </div>
-</transition>
-
-  
-<!-- success dialog -->
-<transition class="scale-up">
-  <div v-if="showSuccessDialog" class="success-popup fixed inset-0 flex items-center text-center justify-center z-50 bg-black bg-opacity-50">
-        <div class="bg-white w-1/3 p-4 rounded shadow">
-        
-            <div>
-              <i class="fa-solid fa-check text-green-500 text-6xl fa-bounce rounded-full border-2 border-green-500"></i>
+          <div class="confirmation-popup bg-white w-1/3 p-4 rounded shadow">
+            <h2 class="text-lg font-medium mb-4">Confirmation</h2>
+            <p class="mb-4">Are you sure you want to proceed?</p>
+            <div class="flex justify-end">
+              <button
+                class="bg-red-500 text-white px-4 py-2 rounded font-medium mr-2"
+                @click="showConfirmationDialog = false"
+              >
+                Cancel
+              </button>
+              <button
+                class="bg-primary text-white px-4 py-2 rounded font-medium"
+                @click="submitProfileData"
+              >
+                Confirm
+              </button>
             </div>
-       
-          <h2 class="text-lg font-medium mb-4">Success</h2>
-          <p class="mb-4">Profile updated successfully</p>
-         
-          <div class="flex justify-end">
-            <button class="bg-primary text-white px-4 py-2 rounded font-medium" @click="showSuccessDialog = false">OK</button>
           </div>
         </div>
-      </div>
-</transition>
+      </transition>
 
-<!-- delete confirmation dialog -->
-<transition name="scale-up">
-  <div v-if="showDeleteConfirmationDialog" class="fixed inset-0 flex items-center justify-center z-50">
-    <div class="confirmation-popup bg-white w-1/3 p-4 rounded shadow">
-      <h2 class="text-lg font-medium mb-4">Confirmation</h2>
-      <p class="mb-4">Are you sure you want to delete this profile?</p>
-      <div class="flex justify-end">
-        <button class="bg-red-500 text-white px-4 py-2 rounded font-medium mr-2" @click="showDeleteConfirmationDialog = false">Cancel</button>
-        <button class="bg-primary text-white px-4 py-2 rounded font-medium" @click="deleteProfile">Confirm</button>
-      </div>
+      <!-- success dialog -->
+      <transition class="scale-up">
+        <div
+          v-if="showSuccessDialog"
+          class="success-popup fixed inset-0 flex items-center text-center justify-center z-50 bg-black bg-opacity-50"
+        >
+          <div class="bg-white w-1/3 p-4 rounded shadow">
+            <div>
+              <i class="fas fa-check text-green-500 text-6xl fa-bounce rounded-full border-2 border-green-500"></i>
+            </div>
+
+            <h2 class="text-lg font-medium mb-4">Success</h2>
+            <p class="mb-4">Profile updated successfully</p>
+
+            <div class="flex justify-end">
+              <button
+                class="bg-primary text-white px-4 py-2 rounded font-medium"
+                @click="showSuccessDialog = false"
+              >
+                OK
+              </button>
+            </div>
+          </div>
+        </div>
+      </transition>
+
+      <!-- delete confirmation dialog -->
+      <transition name="scale-up">
+        <div
+          v-if="showDeleteConfirmationDialog"
+          class="fixed inset-0 flex items-center justify-center z-50"
+        >
+          <div class="confirmation-popup bg-white w-1/3 p-4 rounded shadow">
+            <h2 class="text-lg font-medium mb-4">Confirmation</h2>
+            <p class="mb-4">Are you sure you want to delete this profile?</p>
+            <div class="flex justify-end">
+              <button
+                class="bg-red-500 text-white px-4 py-2 rounded font-medium mr-2"
+                @click="showDeleteConfirmationDialog = false"
+              >
+                Cancel
+              </button>
+              <button
+                class="bg-primary text-white px-4 py-2 rounded font-medium"
+                @click="deleteProfile"
+              >
+                Confirm
+              </button>
+            </div>
+          </div>
+        </div>
+      </transition>
     </div>
-  </div>
-</transition>
-  </div>
-</template>
-    
+  </template>
+
     <script>
     //import router
 import router from "@/router/index.js";
@@ -327,7 +327,7 @@ export default {
           // id_departement: "",
         },
       ],
-    
+
 
       passwordVisible: false,
     };
@@ -345,8 +345,8 @@ export default {
           specialite: { required },
               tel_etudiant: { required, numeric },
               num_carte:{required, numeric}
-          
-        
+
+
         },
       ],
     };
@@ -357,7 +357,7 @@ export default {
       this.showDeleteConfirmationDialog = true;
     },
     showConfirmationDialogFunc() {
-    
+
     if (!this.v$.$error ) {
     this.showConfirmationDialog = true;
 
@@ -381,7 +381,7 @@ export default {
       axios
         .post(
           "http://localhost:8000/api/changeStudentInfo",
-     
+
           {
             id: this.profileData[0].id_etudiant,
             newName: this.profileData[0].prenom_etudiant,
@@ -403,12 +403,12 @@ export default {
                 this.showSuccessDialog = true;
               window.location.reload();
             }, 1000);
-          
+
           console.log("after");
         })
         .catch(function (error) {
           console.log(error);
-   
+
         });
     },
     togglePasswordVisibility() {
@@ -416,7 +416,7 @@ export default {
     },
     deleteProfile() {
       axios
-        .delete("http://localhost:8000/api/deleteStudent", 
+        .delete("http://localhost:8000/api/deleteStudent",
           { params: { id: this.$route.params.id } }
         )
         .then((response) => {
@@ -469,14 +469,14 @@ export default {
               .catch((error) => {
                 console.log(error);
               });
-                
+
   },
   computed() {
     checkNewPassword();
   },
 };
 </script>
-    
+
     <style lang="scss" scoped>
 label {
   color: #3a96b4;
@@ -500,6 +500,5 @@ Dropdown {
   outline: none;
 }
 </style>
-    
-    
-    
+
+

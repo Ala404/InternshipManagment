@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex justify-between mb-12 w-3/4 mx-auto">
+    <div class="flex justify-between mb-12 w-3/4 mx-auto" v-if="applications.length!==0">
       <span
         @click="getAllApplications"
         :class="{ 'bg-white text-primary': all, 'bg-primary text-white': !all }"
@@ -43,9 +43,10 @@
 
     <div class="px-auto max-sm:p-0">
       <div
-        class="grid grid-cols-4 gap-40 font-bold text-center text-primary mb-2 bg-gray-300 rounded p-2"
+        class="grid grid-cols-3 gap-56 font-bold text-center text-primary mb-2 bg-gray-300 rounded p-2 pl-56" v-if="applications.length!==0"
+
       >
-        <div>Image</div>
+
         <div>Title</div>
         <div>Status</div>
         <div>Action</div>
@@ -66,7 +67,7 @@
       <!-- add empty icon if no applications -->
       <div v-if="applications.length === 0" class="text-center mt-32">
         <i class="fas fa-folder-open fa-5x text-primary"></i>
-        <h1 class="text-2xl font-bold text-primary">No applications</h1>
+        <h1 class="text-2xl font-bold text-secondary">No applications</h1>
         <p class="text-gray-500">You have no applications yet</p>
       </div>
 
@@ -90,7 +91,7 @@ export default {
       applications: [],
       ///big tech companies images valid
       companiesImages: [
-       
+
         "http://www.ooredoo.dz/Ooredoo/Satellite?blobcol=urldata&blobheader=image%2Fpng&blobkey=id&blobnocache=false&blobtable=MungoBlobs&blobwhere=1464606283207&ssbinary=true",
 
       ],

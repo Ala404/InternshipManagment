@@ -1,7 +1,7 @@
 <template>
   <div>
    <!-- <AttendanceTable/>  -->
-   <table class="w-full table-auto border-gray-300 text-primary">
+   <table v-if="attendances.length !== 0" class="w-full table-auto border-gray-300 text-primary">
         <thead class="bg-gray-300">
           <tr>
             <th class="px-4 py-2 text-left">Date</th>
@@ -11,17 +11,17 @@
           </tr>
         </thead>
         <tbody class="w-full table-auto">
-        
-    
-      <AttendanceTable v-for="attendance in attendances" :key="attendance.id_presence" :class="(this.attendanceCount + 1) % 2 === 0 ? 'bg-gray-300' : ''" 
+
+
+      <AttendanceTable v-for="attendance in attendances" :key="attendance.id_presence" :class="(this.attendanceCount + 1) % 2 === 0 ? 'bg-gray-300' : ''"
       class="text-gray-600" :date="attendance.date" :entryHour="attendance.heure_entree" :finishingHour="attendance.heure_sortie"
        :observation="attendance.remarque" />
-    
+
      </tbody>
      </table>
      <div v-if="attendances.length === 0" class="flex justify-center items-center  mt-32 ">
             <div class="flex flex-col items-center">
-              <i class="fas fa-calendar-times text-6xl text-primary"></i>
+              <i class="fas fa-calendar-times text-6xl text-secondary"></i>
               <span class="text-gray-500">No attendance</span>
             </div>
           </div>
@@ -43,11 +43,11 @@ export default {
       attendances: [],
       attendanceCount: 0,
 
-      
+
     }
   },created() {
- 
-   
+
+
       axios
         .post("http://localhost:8000/api/consultAttendance", {
           ///student id from local storage
@@ -62,7 +62,7 @@ export default {
         });
   },
   computed() {
-   
+
     console.log(this.attendanceCount)
   },
   }

@@ -5,7 +5,7 @@
     <div v-if="notifications.length === 0">
       <div class="flex justify-center items-center h-64">
         <div class="flex flex-col items-center">
-          <i class="fas fa-bell text-3xl text-primary"></i>
+          <i class="fas fa-bell text-3xl text-secondary"></i>
           <span class="text-gray-500 text-lg">No notifications yet</span>
         </div>
       </div>
@@ -21,7 +21,7 @@
       :is_seen="notification.is_seen"
     />
   </div>
-  
+
 </template>
 
 <script>
@@ -35,7 +35,7 @@ export default defineComponent({
 
   components: {
     NotificationCard,
-    
+
   },
   data() {
     return {
@@ -56,7 +56,7 @@ export default defineComponent({
       .catch((error) => {
         console.log(error);
       });
-    
+
       axios
       .post("http://localhost:8000/api/seeStudentNotif", { id: localStorage.getItem("id") })
       .then((res) => {
@@ -67,6 +67,6 @@ export default defineComponent({
       });
 
   },
-  
+
 });
 </script>

@@ -9,7 +9,7 @@
 
       <div class="flex flex-wrap mb-6">
         <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="first-name">First Name</label>
+          <label for="first-name">            <i class="fas fa-user"></i> First Name</label>
           <input
             type="text"
             id="first"
@@ -26,7 +26,7 @@
         </div>
 
         <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="last-name">Last Name</label>
+          <label for="last-name">            <i class="fas fa-user"></i> Last Name</label>
           <input
             type="text"
             id="last"
@@ -44,7 +44,7 @@
       </div>
       <div class="flex flex-wrap mb-6">
         <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="email">Email</label>
+          <label for="email">            <i class="fas fa-envelope"></i> Email</label>
           <input
           disabled
             type="email"
@@ -61,7 +61,7 @@
         </div>
 
         <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="phone">Phone</label>
+          <label for="phone">            <i class="fas fa-phone"></i> Phone</label>
           <input
             type="text"
             id="phone"
@@ -108,7 +108,7 @@
       <!--department and speciality-->
       <div class="flex flex-wrap mb-6">
         <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="department">Department</label>
+          <label for="department">           <i class="fas fa-building"></i> Department</label>
           <select
             v-model="this.profileData[0].nom_departement"
             class="border-2 border-gray-300 p-2 rounded-lg block w-full"
@@ -123,7 +123,7 @@
           </select>
         </div>
         <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="speciality">Speciality</label>
+          <label for="speciality">          <i class="fas fa-user-graduate"></i> Speciality</label>
           <input
             type="text"
             id="speciality"
@@ -141,7 +141,7 @@
       <!--birthday and birth address-->
       <div class="flex flex-wrap mb-6">
         <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="birth">Birth Date</label>
+          <label for="birth">           <i class="fas fa-birthday-cake"></i> Birth Date</label>
           <input
             type="date"
             id="birth"
@@ -157,7 +157,7 @@
         </div>
 
         <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="address">Birth Address</label>
+          <label for="address">         <i class="fas fa-map-marker-alt"></i> Birth Address</label>
           <input
             type="address"
             id="address"
@@ -175,7 +175,7 @@
       <!-- registration number and birthdate -->
       <div class="flex flex-wrap mb-6">
         <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="diploma">Diploma</label>
+          <label for="diploma">         <i class="fas fa-graduation-cap"></i> Diploma</label>
           <input
             type="text"
             id="diploma"
@@ -191,7 +191,7 @@
         </div>
 
         <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="reg">Registration Number</label>
+          <label for="reg">       <i class="fas fa-id-card"></i> Registration Number</label>
           <input
             type="text"
             id="reg"
@@ -210,7 +210,7 @@
       <div class="flex flex-wrap mb-6">
         <!--profile picture-->
         <div class="flex flex-col w-full md:w-1/2 px-3 mb-6 md:mb-0">
-          <label for="profile-picture">Profile Picture</label>
+          <label for="profile-picture">       <i class="fas fa-image"></i> Profile Picture</label>
           <input
             type="file"
             id="profile-picture"
@@ -231,7 +231,7 @@
             class="bg-primary text-white px-4 py-2 rounded font-medium w-full"
             label="Success" severity="success" @click="this.showPasswordDialogFunc"
           >
-            Update
+            <i class="fas fa-check"></i> Update
           </button>
         </div>
 
@@ -244,7 +244,7 @@
             class="bg-red-500 text-white px-4 py-2 rounded font-medium w-full"
 
           >
-            Cancel
+            <i class="fas fa-times"></i> Cancel
           </button>
         </router-link>
       </div>
@@ -252,8 +252,8 @@
     <transition name="scale-up">
       <div v-if="showPasswordDialog" class="fixed inset-0 flex items-center justify-center z-50">
         <div class="pass-popup bg-white w-1/3 p-4 rounded shadow">
-          <h2 class="text-lg font-medium mb-4">Confirm Password</h2>
-          <label for="password">Password:</label>
+          <h2 class="text-lg font-medium mb-4"> <i class="fas fa-lock"></i>Confirm Password</h2>
+          <label for="password">          Password</label>
           <div class="password-input">
             <input  :type="passwordVisible ? 'text' : 'password'" id="password" v-model="profileData[0].password" class="relative border border-gray-300 rounded mb-4 p-2 w-full">
             <span @click="togglePasswordVisibility"  class="password-toggle absolute -mx-8 mt-2 text-gray-500 cursor-pointer">
@@ -454,7 +454,7 @@ export default {
          setTimeout(() => {
               window.location.reload();
             }, 1000);   this.showSuccessDialog = true;
-            
+
           }
           console.log("after");
         })

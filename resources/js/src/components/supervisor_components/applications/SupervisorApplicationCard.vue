@@ -4,7 +4,7 @@
       <img class="w-24 object-cover rounded-lg mr-4" :src="image" alt="Company Logo">
       <div class="flex gap-10 justify-between items-start  max-md:items-center w-full">
         <h4 class="text-xl font-bold  text-primary my-auto">{{ title }}</h4>
-        <h4 class="text-xl font-bold  text-primary my-auto">{{ studentFName }} {{ studentLName }}</h4>
+        <h4 class="text-md font-bold  text-gray-500 my-auto"> <i class="fas fa-user mr-2"></i> {{ studentFName }} {{ studentLName }}</h4>
         <p class="text-gray-600 text-sm my-auto max-md:text-center">
           <i class="fas fa-envelope mr-2"></i>
           <span>{{ email }}</span>
@@ -14,7 +14,7 @@
             <button v-if="this.resStatus =='enAttente'" class="bg-orange-500 text-white rounded-lg px-4 py-2 shadow-md hover:bg-orange-600" @click="showDetails = true">
               Manage
             </button>
-   
+
           </div>
       </router-link>
       </div>
@@ -38,7 +38,7 @@
   </div>
 </template>
 
-      
+
       <script>
 import axios from "axios";
 export default {
@@ -78,9 +78,9 @@ export default {
           console.log(error);
         });tss
     },
-    
+
           refuseApplication() {
-        
+
         console.log(this.id);
         axios
           .post("http://localhost:8000/api/refuseRequestRes", {
@@ -117,5 +117,4 @@ export default {
 
 };
 </script>
-      
-    
+

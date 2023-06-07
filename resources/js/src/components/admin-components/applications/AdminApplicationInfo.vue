@@ -1,120 +1,144 @@
 <template>
-  <div class="bg-white rounded-md shadow p-4">
-    <!-- <img :src="internshipData[0].photo_offre" alt="" /> -->
-    <label class="text-md font-bold text-primary mb-2">Created By Student:</label>
-    <h2 class="text-gray-600">
-      {{ applicationInfo[0].prenom_etudiant }}
-      {{ applicationInfo[0].nom_etudiant }}
-    </h2>
-    <label class="text-md font-bold text-primary my-2">Title:</label>
-    <p class="text-gray-600">{{ applicationInfo[0].theme }}</p>
-    <label class="text-md font-bold text-primary my-2">Duration:</label>
-    <p class="text-gray-600">{{ applicationInfo[0].duree }} weeks</p>
-    <!--supervisor info-->
-    <label class="text-md font-bold text-primary my-2">Supervisor:</label>
-    <p class="text-gray-600">
-      {{ applicationInfo[0].prenom_responsable }}
-      {{ applicationInfo[0].nom_responsable }}
-    </p>
-    <label class="text-md font-bold text-primary my-2">Email:</label>
-    <p class="text-gray-600">{{ applicationInfo[0].email_responsable }}</p>
-    <label class="text-md font-bold text-primary my-2">Company Address:</label>
-    <p class="text-gray-600">{{ applicationInfo[0].addresse_entreprise }}</p>
-    <!-- <label class="text-md font-bold text-primary my-2">Description:</label>
-    <p class="text-gray-800 mb-4">{{ applicationInfo[0].description }}</p> -->
-    <div class="flex gap-4 my-4">
-      <!-- <div class="flex justify-between">
-        <button
-          class="bg-red-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-red-600"
-        >
-          Delete
-        </button>
-      </div> -->
-      <div class="flex items-center justify-between gap-8 ">
-              <button  class="bg-orange-500 text-white rounded-lg px-4 py-2 shadow-md hover:bg-orange-600" @click="showDetails = true">
-                Manage
+    <div class="bg-white rounded-md shadow p-4">
+      <!-- <img :src="internshipData[0].photo_offre" alt="" /> -->
+      <label class="text-md font-bold text-primary mb-2">
+        <i class="fas fa-user"></i> Created By Student:
+      </label>
+      <h2 class="text-gray-600">
+        {{ applicationInfo[0].prenom_etudiant }}
+        {{ applicationInfo[0].nom_etudiant }}
+      </h2>
+      <label class="text-md font-bold text-primary my-2">
+        <i class="fas fa-file-alt"></i> Title:
+      </label>
+      <p class="text-gray-600">{{ applicationInfo[0].theme }}</p>
+      <label class="text-md font-bold text-primary my-2">
+        <i class="far fa-clock"></i> Duration:
+      </label>
+      <p class="text-gray-600">{{ applicationInfo[0].duree }} weeks</p>
+      <!--supervisor info-->
+      <label class="text-md font-bold text-primary my-2">
+        <i class="fas fa-user-tie"></i> Supervisor:
+      </label>
+      <p class="text-gray-600">
+        {{ applicationInfo[0].prenom_responsable }}
+        {{ applicationInfo[0].nom_responsable }}
+      </p>
+      <label class="text-md font-bold text-primary my-2">
+        <i class="far fa-envelope"></i> Email:
+      </label>
+      <p class="text-gray-600">{{ applicationInfo[0].email_responsable }}</p>
+      <label class="text-md font-bold text-primary my-2">
+        <i class="fas fa-map-marker-alt"></i> Company Address:
+      </label>
+      <p class="text-gray-600">{{ applicationInfo[0].addresse_entreprise }}</p>
+      <!-- <label class="text-md font-bold text-primary my-2">Description:</label>
+      <p class="text-gray-800 mb-4">{{ applicationInfo[0].description }}</p> -->
+      <div class="flex gap-4 my-4">
+        <!-- <div class="flex justify-between">
+          <button
+            class="bg-red-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-red-600"
+          >
+            Delete
+          </button>
+        </div> -->
+        <div class="flex items-center justify-between gap-8">
+          <button class="bg-orange-500 text-white rounded-lg px-4 py-2 shadow-md hover:bg-orange-600" @click="showDetails = true">
+            <i class="fas fa-cog"></i> Manage
+          </button>
+          <router-link to="/admin-applications">
+            <button class="bg-gray-500 text-white rounded-lg px-4 py-2 shadow-md hover:bg-gray-600" @click="showDetails = true">
+              <i class="fas fa-arrow-left"></i> Back
+            </button>
+          </router-link>
+        </div>
+      </div>
+      <div class="fixed top-0 left-0 flex items-center justify-center w-full h-full z-50" v-if="showDetails">
+        <div class="absolute top-0 left-0 w-full h-full bg-gray-900 opacity-50"></div>
+        <div class="z-10 bg-white rounded-lg shadow-lg p-8 w-96">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">Application Details</h2>
+          <p class="text-gray-600 mb-4">
+            <i class="fas fa-user"></i> Student Name: {{ applicationInfo[0].prenom_etudiant }} {{ applicationInfo[0].nom_etudiant }}
+          </p>
+          <p class="text-gray-600 mb-4">
+            <i class="far fa-envelope"></i> Email: {{ applicationInfo[0].email }}
+          </p>
+          <div class="flex items-center justify-between mb-4">
+            <button class="bg-green-500 text-white rounded-lg px-4 py-2 shadow-md hover:bg-green-600" @click="acceptApplication">
+              <i class="fas fa-check"></i> Accept
+            </button>
+            <button class="bg-red-500 text-white rounded-lg px-4 py-2 shadow-md hover:bg-red-600" @click="showclearificationInput = true">
+              <i class="fas fa-times"></i> Refuse
+            </button>
+          </div>
+          <div class="mb-4">
+            <!-- <textarea v-model="motif" class="w-full border-gray-300 rounded-md p-2" placeholder="Add clarification"></textarea> -->
+          </div>
+          <button class="bg-gray-500 text-white rounded-lg px-4 py-2 shadow-md hover:bg-gray-600" @click="showDetails = false">
+            <i class="fas fa-times"></i> Close
+          </button>
+        </div>
+      </div>
+
+      <!-- New pop-up dialog box -->
+      <transition class="scale-up">
+        <div class="fixed top-0 left-0 flex items-center justify-center w-full h-full z-50" v-if="showCreateSupervisor">
+          <div class="absolute top-0 left-0 w-full h-full bg-gray-900 opacity-50"></div>
+          <div class="z-10 bg-white rounded-lg shadow-lg p-8 w-96">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Confirm Supervisor Account Creation</h2>
+            <p class="text-gray-600 mb-4">Do you want to create a supervisor account?</p>
+            <div class="flex items-center justify-between mb-4">
+              <button class="bg-green-500 text-white rounded-lg px-4 py-2 shadow-md hover:bg-green-600" @click="createSupervisorAccount">
+                <i class="fas fa-check"></i> Yes
               </button>
-<router-link to="/admin-applications">
-
-                <button  class="bg-gray-500 text-white rounded-lg px-4 py-2 shadow-md hover:bg-gray-600" @click="showDetails = true">
-                  Back
-                </button>
-
-</router-link>
+              <button class="bg-red-500 text-white rounded-lg px-4 py-2 shadow-md hover:bg-red-600" @click="showCreateSupervisor = false">
+                <i class="fas fa-times"></i> No
+              </button>
             </div>
-    </div>
-    <div class="fixed top-0 left-0 flex items-center justify-center w-full h-full z-50" v-if="showDetails">
-      <div class="absolute top-0 left-0 w-full h-full bg-gray-900 opacity-50"></div>
-      <div class="z-10 bg-white rounded-lg shadow-lg p-8 w-96">
-        <h2 class="text-2xl font-bold text-gray-800 mb-4">Application Details</h2>
-        <p class="text-gray-600 mb-4">Student Name: {{ applicationInfo[0].prenom_etudiant }} {{ applicationInfo[0].nom_etudiant }}</p>
-        <p class="text-gray-600 mb-4">Email: {{ applicationInfo[0].email }}</p>
-        <div class="flex items-center justify-between mb-4">
-          <button class="bg-green-500 text-white rounded-lg px-4 py-2 shadow-md hover:bg-green-600" @click="acceptApplication">Accept</button>
-          <button class="bg-red-500 text-white rounded-lg px-4 py-2 shadow-md hover:bg-red-600" @click="showclearificationInput = true">Refuse</button>
-        </div>
-        <div class="mb-4">
-          <!-- <textarea v-model="motif" class="w-full border-gray-300 rounded-md p-2" placeholder="Add clarification"></textarea> -->
-        </div>
-        <button class="bg-gray-500 text-white rounded-lg px-4 py-2 shadow-md hover:bg-gray-600" @click="showDetails = false">Close</button>
-      </div>
-    </div>
-
-     <!-- New pop-up dialog box -->
-   <transition class="scale-up">
-      <div class="fixed top-0 left-0 flex items-center justify-center w-full h-full z-50" v-if="showCreateSupervisor">
-        <div class="absolute top-0 left-0 w-full h-full bg-gray-900 opacity-50"></div>
-        <div class="z-10 bg-white rounded-lg shadow-lg p-8 w-96">
-          <h2 class="text-2xl font-bold text-gray-800 mb-4">Confirm Supervisor Account Creation</h2>
-          <p class="text-gray-600 mb-4">Do you want to create a supervisor account?</p>
-          <div class="flex items-center justify-between mb-4">
-            <button class="bg-green-500 text-white rounded-lg px-4 py-2 shadow-md hover:bg-green-600" @click="createSupervisorAccount">Yes</button>
-            <button class="bg-red-500 text-white rounded-lg px-4 py-2 shadow-md hover:bg-red-600" @click="showCreateSupervisor = false">No</button>
+            <button class="bg-gray-500 text-white rounded-lg px-4 py-2 shadow-md hover:bg-gray-600" @click="showCreateSupervisor = false">
+              <i class="fas fa-times"></i> Close
+            </button>
           </div>
-          <button class="bg-gray-500 text-white rounded-lg px-4 py-2 shadow-md hover:bg-gray-600" @click="showCreateSupervisor = false">Close</button>
         </div>
-      </div>
-   </transition>
+      </transition>
 
-
-   <transition class="scale-up">
-      <div class="fixed top-0 left-0 flex items-center justify-center w-full h-full z-50" v-if="showclearificationInput">
-        <div class="absolute top-0 left-0 w-full h-full bg-gray-900 opacity-50"></div>
-        <div class="z-10 bg-white rounded-lg shadow-lg p-8 w-96">
-          <h2 class="text-2xl font-bold text-gray-800 mb-4">Add a clearification</h2>
-          <textarea v-model="motif" class="w-full border-gray-300 rounded-md p-2" placeholder="Add clarification"></textarea>
-          <div class="flex items-center justify-between mb-4">
-            <button class="bg-green-500 text-white rounded-lg px-4 py-2 shadow-md hover:bg-green-600" @click="refuseApplication">Send</button>
-
+      <transition class="scale-up">
+        <div class="fixed top-0 left-0 flex items-center justify-center w-full h-full z-50" v-if="showclearificationInput">
+          <div class="absolute top-0 left-0 w-full h-full bg-gray-900 opacity-50"></div>
+          <div class="z-10 bg-white rounded-lg shadow-lg p-8 w-96">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Add a clarification</h2>
+            <textarea v-model="motif" class="w-full border-gray-300 rounded-md p-2" placeholder="Add clarification"></textarea>
+            <div class="flex items-center justify-between my-4">
+              <button class="bg-green-500 text-white rounded-lg px-4 py-2 shadow-md hover:bg-green-600" @click="refuseApplication">
+                <i class="fas fa-paper-plane"></i> Send
+              </button>
+              <button class="bg-gray-500 text-white rounded-lg px-4 py-2 shadow-md hover:bg-gray-600" @click="showclearificationInput = false">
+                <i class="fas fa-times"></i> Close
+              </button>
+            </div>
           </div>
-          <button class="bg-gray-500 text-white rounded-lg px-4 py-2 shadow-md hover:bg-gray-600" @click="showclearificationInput = false">Close</button>
         </div>
-      </div>
-   </transition>
+      </transition>
 
+      <!-- New pop-up dialog box for success -->
 
-
-    <!-- New pop-up dialog box for success -->
-
-    <transition class="scale-up">
-  <div v-if="showSuccess" class="success-popup fixed inset-0 flex items-center text-center justify-center z-50 bg-black bg-opacity-50">
-        <div class="bg-white w-1/3 p-4 rounded shadow">
-
+      <transition class="scale-up">
+        <div v-if="showSuccess" class="success-popup fixed inset-0 flex items-center text-center justify-center z-50 bg-black bg-opacity-50">
+          <div class="bg-white w-1/3 p-4 rounded shadow">
             <div>
-              <i class="fa-solid fa-check text-green-500 text-6xl fa-bounce rounded-full border-2 border-green-500"></i>
+              <i class="fas fa-check text-green-500 text-6xl fa-bounce rounded-full border-2 border-green-500"></i>
             </div>
-
-          <h2 class="text-lg font-medium mb-4">Success</h2>
-          <p class="mb-4">Your request sent successfully</p>
-
-          <div class="flex justify-end">
-            <button class="bg-primary text-white px-4 py-2 rounded font-medium" @click="showSuccessDialog = false">OK</button>
+            <h2 class="text-lg font-medium mb-4">Success</h2>
+            <p class="mb-4">Your request sent successfully</p>
+            <div class="flex justify-end">
+              <button class="bg-primary text-white px-4 py-2 rounded font-medium" @click="showSuccessDialog = false">OK</button>
+            </div>
           </div>
         </div>
-      </div>
-</transition>
-  </div>
-</template>
+      </transition>
+    </div>
+  </template>
+
 
 <script>
 import axios from "axios";

@@ -3,34 +3,34 @@
     <div class=" absolute right-32 -top-10 ">
         <!-- <Filter></Filter> -->
     </div>
-  
+
   <!--Cards-->
-  
+
      <div class="px-32 max-sm:p-0">
         <!--default card-->
         <!-- empty icon if no internships -->
         <div v-if="internships.length == 0" class="flex justify-center items-center h-64">
             <div class="flex flex-col items-center">
-                <i class="fas fa-folder-open text-6xl text-primary"></i>
+                <i class="fas fa-folder-open text-6xl text-secondary"></i>
                 <span class="text-gray-500 text-2xl">No internships yet</span>
             </div>
         </div>
-     
+
                 <InternshipCard @click="getIntership"  :to="`/internships/${internship.id_offre}`" v-for="internship in internships" :key="internship.id_offre"
                 :image="companiesImages[Math.floor(Math.random() * companiesImages.length)]"
                 :title="internship.theme"
                 :address="internship.addresse_entreprise"
-                :deadline="internship.deadline" 
-                :duration="internship.duree" 
+                :deadline="internship.deadline"
+                :duration="internship.duree"
                 :description="internship.description"
                 />
-        
-            
-            
 
-     </div>  
 
- 
+
+
+     </div>
+
+
   <!--add floating rounded button usnig before pseudo element-->
 
     <router-link to="/new-internship-application">
@@ -77,7 +77,7 @@ export default {
     },
     data() {
         return {
-            
+
             internships: [],
             showOfferForm: false,
             // internship: {},
@@ -86,8 +86,8 @@ export default {
         'http://www.ooredoo.dz/Ooredoo/Satellite?blobcol=urldata&blobheader=image%2Fpng&blobkey=id&blobnocache=false&blobtable=MungoBlobs&blobwhere=1464606283207&ssbinary=true',
 
     ],
-           
-                
+
+
         }
 
     },
@@ -112,11 +112,11 @@ export default {
                 console.log(error);
             });
 
-           
+
     },
-    
-    
-    
+
+
+
 }
 </script>
 

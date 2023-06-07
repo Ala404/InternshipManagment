@@ -1,5 +1,7 @@
 <template>
   <div>
+    <router-link to="/admin-student-profiles"><span class="absolute top-4 left-4 text-orange-600 text-lg font-semibold ">Students Profiles</span></router-link>
+
      <!--display empty message if no students-->
 
     <div v-if="students.length === 0" class="text-center text-gray-500 py-32">
@@ -21,7 +23,7 @@
     </div>
   </div>
 </template>
-  
+
   <script>
 import axios from "axios";
 import StudentProfileCard from "@/components/admin-components/students_profiles/StudentProfileCard.vue";
@@ -68,8 +70,7 @@ export default {
   },
 };
 </script>
-  
+
   <style>
 /* Add any custom styling for your website here, using Tailwind CSS */
 </style>
-  

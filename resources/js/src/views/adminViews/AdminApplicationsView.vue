@@ -1,5 +1,5 @@
 <template>
-  <div class="px-32 max-sm:p-0">
+  <div class="px-32 max-sm:p-0" v-if="applications.length!==0">
     <router-link to="/admin-applications"><span class="absolute top-4 left-4 text-orange-600 text-lg font-semibold ">Applications</span></router-link>
 
     <!--filering applications by state-->
@@ -35,16 +35,16 @@
       >
         Pending
       </span>
-   
+
     </div>
     <div class="px-auto max-sm:p-0">
-      <div
-        class="flex flex-wrap justify-between font-bold text-center text-primary mb-2 bg-gray-300 rounded p-2 px-8"
+        <div
+        class="grid grid-cols-3 gap-56 font-bold text-center text-primary mb-2 bg-gray-300 rounded p-2 pl-56" v-if="applications.length!==0"
+
       >
-        <div>Image</div>
+
         <div>Title</div>
-        <div class="mr-24">Student</div>
-        <div class="mr-24">Email</div>
+        <div>Status</div>
         <div>Action</div>
       </div>
 
@@ -83,11 +83,11 @@ export default {
   data() {
     return {
       applications: [
-    
+
       ],
       companiesImages: [
         'http://www.ooredoo.dz/Ooredoo/Satellite?blobcol=urldata&blobheader=image%2Fpng&blobkey=id&blobnocache=false&blobtable=MungoBlobs&blobwhere=1464606283207&ssbinary=true',
-        
+
     ],
       accepted: false,
       rejected: false,
@@ -175,7 +175,7 @@ export default {
         });
     }
 
-   
+
   },
 };
 </script>

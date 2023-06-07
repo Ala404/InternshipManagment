@@ -8,7 +8,8 @@
       class="m-2 h-12 object-cover rounded-full"
     />
     <div class="p-4">
-      <h2 class="text-lg font-bold">{{ firstName }} {{ lastName }}</h2>
+        <h2 class="text-md font-bold"> <i class="fas fa-user mr-2"></i> {{ firstName }} {{ lastName }}</h2>
+
     </div>
     <router-link :to="`/supervisor-profile-info/${id}`">
       <i
@@ -17,7 +18,7 @@
     </router-link>
   </div>
 </template>
-  
+
   <script>
 export default {
   props: {
@@ -28,8 +29,7 @@ export default {
   },
 };
 </script>
-  
+
   <style>
 /* Add any custom styling for your card component here, using Tailwind CSS */
 </style>
-  
