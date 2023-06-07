@@ -81,7 +81,7 @@
       </div>
 
       <!-- New pop-up dialog box -->
-      <transition class="scale-up">
+      <transition name="scale-up">
         <div class="fixed top-0 left-0 flex items-center justify-center w-full h-full z-50" v-if="showCreateSupervisor">
           <div class="absolute top-0 left-0 w-full h-full bg-gray-900 opacity-50"></div>
           <div class="z-10 bg-white rounded-lg shadow-lg p-8 w-96">
@@ -102,7 +102,7 @@
         </div>
       </transition>
 
-      <transition class="scale-up">
+      <transition name="scale-up">
         <div class="fixed top-0 left-0 flex items-center justify-center w-full h-full z-50" v-if="showclearificationInput">
           <div class="absolute top-0 left-0 w-full h-full bg-gray-900 opacity-50"></div>
           <div class="z-10 bg-white rounded-lg shadow-lg p-8 w-96">
@@ -122,7 +122,7 @@
 
       <!-- New pop-up dialog box for success -->
 
-      <transition class="scale-up">
+      <transition name="scale-up">
         <div v-if="showSuccess" class="success-popup fixed inset-0 flex items-center text-center justify-center z-50 bg-black bg-opacity-50">
           <div class="bg-white w-1/3 p-4 rounded shadow">
             <div>
@@ -175,7 +175,7 @@ export default {
           console.log(response.data);
           if (response.data.msg == 'confirm creation') {
             this.showCreateSupervisor = true; // Show the supervisor account creation dialog box
-            this.createSupervisorAccount();
+           // this.createSupervisorAccount();
 
           }else{
             this.showSuccess = true;

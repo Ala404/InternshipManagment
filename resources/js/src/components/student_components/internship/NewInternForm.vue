@@ -266,7 +266,7 @@
 </transition>
 
 <!-- success dialog -->
-<transition class="scale-up">
+<transition name="scale-up">
   <div v-if="showSuccessDialog" class="success-popup fixed inset-0 flex items-center text-center justify-center z-50 bg-black bg-opacity-50">
         <div class="bg-white w-1/3 p-4 rounded shadow">
 

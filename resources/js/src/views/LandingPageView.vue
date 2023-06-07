@@ -383,7 +383,7 @@ input{
 
 .eye-drop {
     position: absolute;
-    top: 54.8%;
+    top: 54.2%;
     right: 500px;
     transform: translateY(-50%);
     cursor: pointer;

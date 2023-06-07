@@ -21,13 +21,13 @@
             <i @click="deleteApplication" v-if="status == 'refused' || status == 'pending'" class="fas fa-trash p-3 my-2 mx-4 bg-white border-2 rounded-full text-red-500 border-red-500 hover:bg-red-500 hover:text-white transition-all"></i>
 
             <!-- show a clarification icon if refused -->
-            <i @click="showclearfi = true" v-if="status == 'refused'" class="fas fa-exclamation-triangle p-3 my-2 mx-4 bg-white border-2 rounded-full text-yellow-500 border-yellow-500 hover:bg-yellow-500 hover:text-white transition-all"></i>
+            <i @click="showclearfi = true" v-if="status == 'refused' && motif" class="fas fa-exclamation-triangle p-3 my-2 mx-4 bg-white border-2 rounded-full text-yellow-500 border-yellow-500 hover:bg-yellow-500 hover:text-white transition-all"></i>
           </div>
         </div>
       </div>
 
       <!-- clarification dialog -->
-      <transition class="scale-up">
+      <transition name="scale-up">
         <div v-if="showclearfi" class="success-popup fixed inset-0 flex items-center text-center justify-center z-50 bg-black bg-opacity-50">
           <div class="bg-white w-1/3 p-4 rounded shadow">
             <h2 class="text-lg font-medium mb-4">Clarification</h2>

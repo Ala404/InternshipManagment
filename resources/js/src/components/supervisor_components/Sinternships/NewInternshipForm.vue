@@ -149,7 +149,7 @@
       </div>
     </form>
     <!--confirmation modal-->
-    <transition class="scale-up">
+    <transition name="scale-up">
       <div v-if="showModal" class="modal">
         <div class="modal-content">
           <div class="modal-header">

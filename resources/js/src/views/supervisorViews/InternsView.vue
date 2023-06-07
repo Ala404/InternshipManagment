@@ -1,5 +1,13 @@
 <template>
   <div>
+
+   <!-- empty icon if no applications -->
+    <div v-if="interns.length === 0" class="text-center mt-32">
+      <i class="fas fa-user fa-5x text-secondary"></i>
+      <h1 class="text-2xl font-bold text-primary">No interns</h1>
+      <p class="text-gray-500">You have no interns yet</p>
+    </div>
+
     <InternCard
       v-for="intern in interns"
       :key="intern.id_etudiant"

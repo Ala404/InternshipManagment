@@ -1,6 +1,7 @@
 <template>
   <div
     class="flex justify-between items-center bg-white rounded-lg overflow-hidden shadow-md m-2 p-2"
+    
   >
     <img
       :src="profilePictureUrl"
@@ -59,6 +60,7 @@ export default {
     firstName: String,
     lastName: String,
     profilePictureUrl: String,
+    // endDate: String,
   },
   data() {
     return {};
@@ -146,17 +148,17 @@ export default {
           },
           " , born on ",
           {
-            text: `${data.dateNaissance}`,
+            text: ` ${data.dateNaissance}`,
             bold: true,
           },
           " in ",
           {
-            text: `${data.lieuNaissance}`,
+            text: ` ${data.lieuNaissance}`,
             bold: true,
           },
           " , enrolled in  ",
           {
-            text: `${data.uniNom}`,
+            text: ` ${data.uniNom}`,
             bold: true,
           },
         ],
@@ -167,12 +169,12 @@ export default {
         text: [
           ", has completed an internship in the field/specialty ",
           {
-            text: `${data.diplome} / ${data.specialite}`,
+            text: ` ${data.diplome} / ${data.specialite}`,
             bold: true,
           },
           " at the",
           {
-            text: `${data.nomEntr}`,
+            text: ` ${data.nomEntr}`,
             bold: true,
           },
         ],
@@ -199,12 +201,12 @@ export default {
         text: [
           "Done at ",
           {
-            text: `${data.addresseEntr}`,
+            text: ` ${data.addresseEntr}`,
             bold: true,
           },
           " on ",
           {
-            text: `${data.currentDate}`,
+            text: ` ${data.currentDate}`,
             bold: true,
           },
         ],
@@ -216,7 +218,7 @@ export default {
           text: [
             `Representative of the Faculty of Information and Communication Technology,  `, 
           {
-            text: `${data.uniNom}`,
+            text: ` ${data.uniNom}`,
             bold: true,
           },
         ],
@@ -227,7 +229,7 @@ export default {
       {
           text: [`Responsible of the Institution,  `,
           {
-            text: `${data.nomEntr}`,
+            text: ` ${data.nomEntr}`,
             bold: true,
           },],
 

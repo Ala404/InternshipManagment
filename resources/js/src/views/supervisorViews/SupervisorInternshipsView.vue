@@ -16,6 +16,7 @@
                 :deadline="internship.deadline" 
                 :duration="internship.duree" 
                 :description="internship.description"
+                :address="internship.addresse_entreprise"
                 />
         
             

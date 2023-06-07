@@ -1,5 +1,5 @@
 <template>
-  <div class="px-32 max-sm:p-0" v-if="applications.length!==0">
+  <div class="px-32 max-sm:p-0">
     <router-link to="/admin-applications"><span class="absolute top-4 left-4 text-orange-600 text-lg font-semibold ">Applications</span></router-link>
 
     <!--filering applications by state-->
@@ -39,7 +39,7 @@
     </div>
     <div class="px-auto max-sm:p-0">
         <div
-        class="grid grid-cols-3 gap-56 font-bold text-center text-primary mb-2 bg-gray-300 rounded p-2 pl-56" v-if="applications.length!==0"
+        class="grid grid-cols-3 gap-56 font-bold text-center text-primary mb-2 bg-gray-300 rounded p-2 pl-56" 
 
       >
 

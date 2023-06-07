@@ -12,7 +12,7 @@
     <section >
 
           <div class="flex flex-wrap mb-6">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 mx-auto">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 mx-auto" >
               <label
                 class="block uppercase text-gray-700 text-xs font-bold mb-2"
                 for="intern-title"
@@ -24,6 +24,7 @@
               <!--input field with bg-white and border-gray-200 text-gray-300-->
               <input
               :readonly="applicationData[0].createur=='etudiant' ? null:  'readonly' "
+              
                 v-model="this.applicationData[0].theme"
                 class="appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-200"
                 id="intern-title"
@@ -50,6 +51,7 @@
                 Duration
               </label>
               <input
+              
               :readonly="applicationData[0].createur=='etudiant' ? null:  'readonly' "
                 v-model="applicationData[0].duree"
                 class="appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:border-gray-200"
@@ -297,7 +299,7 @@
 
 
 <!-- success dialog -->
-<transition class="scale-up">
+<transition name="scale-up">
   <div v-if="showSuccessDialog" class="success-popup fixed inset-0 flex items-center text-center justify-center z-50 bg-black bg-opacity-50">
         <div class="bg-white w-1/3 p-4 rounded shadow">
 
