@@ -1,40 +1,31 @@
 <template>
 
-        <!-- <thead>
 
-          <tr class="bg-slate-100">
-            <th class="border-gray-300 border-2 px-4 py-2"></th>
-            <th class="border-gray-300 border-2 px-4 py-2 text-center bg-gray-300">Excellent</th>
-            <th class="border-gray-300 border-2 px-4 py-2 text-center bg-gray-300">Good</th>
-            <th class="border-gray-300 border-2 px-4 py-2 text-center bg-gray-300">Medium</th>
-            <th class="border-gray-300 border-2 px-4 py-2 text-center bg-gray-300">Insuffisant</th>
-            <th class="border-gray-300 border-2 px-4 py-2 text-center bg-gray-300">Very Week</th>
-          </tr>
-        </thead> -->
-        <section class="flex justify-between items-center w-full flex-wrap bg-transparent">
+<section class="flex justify-between items-center w-full flex-wrap bg-transparent">
           <div class="bg-white py-8 rounded-lg shadow-lg hover:text-white hover:bg-primary cursor-pointer">
             <!-- point as big number -->
-            <h2 class=" text-center text-4xl font-bold text-secondary ">{{discipline}}</h2>
+            <i class="fas fa-user-graduate mx-auto w-full text-center text-5xl "></i>
+            <h2 class="text-center text-4xl font-bold text-secondary mt-4">{{discipline}}</h2>
             <p class="text-center px-4 py-2 text-xl font-semibold">General discipline and human relations</p>
-
           </div>
           <div class="bg-white py-8 rounded-lg shadow-lg hover:text-white hover:bg-primary cursor-pointer">
             <!-- point as big number -->
-            <h2 class="text-4xl text-center font-bold text-secondary">{{attitude}}</h2>
+            <i class="fas fa-briefcase mx-auto w-full text-center text-5xl"></i>
+            <h2 class="text-center text-4xl font-bold text-secondary mt-4">{{attitude}}</h2>
             <p class="text-center px-4 py-2 text-xl font-semibold">Work skills and handling</p>
-
           </div>
-          <div class="bg-white py-8 rounded-lg shadow-lg hover:text-white hover:bg-primary cursor-pointer">
+          <div class="bg-white py-8 rounded-lg hover:text-white hover:bg-primary cursor-pointer">
 
             <!-- point as big number -->
-            <h2 class="text-4xl text-center font-bold text-secondary">{{initiative}}</h2>
+            <i class="fas fa-lightbulb mx-auto w-full text-center text-5xl"></i>
+            <h2 class="text-center text-4xl font-bold text-secondary mt-4">{{initiative}}</h2>
             <p class="text-center px-4 py-2 text-xl font-semibold">Initiative/Leadership</p>
-
           </div>
-          <div class="bg-white py-8 rounded-lg shadow-lg  hover:text-white hover:bg-primary cursor-pointer">
+          <div class="bg-white py-8 rounded-lg  hover:text-white hover:bg-primary cursor-pointer">
 
             <!-- point as big number -->
-            <h2 class="text-4xl text-center font-bold text-secondary">{{capacite}}</h2>
+            <i class="fas fa-brain mx-auto w-full text-center text-5xl"></i>
+            <h2 class="text-center text-4xl font-bold text-secondary mt-4">{{capacite}}</h2>
             <p class="text-center px-4 py-2 text-xl font-semibold">Imagination skills and innovation</p>
 
 
@@ -43,18 +34,21 @@
          <div class="mt-8 flex justify-between w-full">
             <div class="bg-white py-8 rounded-lg shadow-lg hover:text-white hover:bg-primary cursor-pointer">
               <!-- point as big number -->
-              <h2 class="text-4xl text-center font-bold text-secondary">{{connaissance}}</h2>
-              <div class="text-center px-4 py-2 text-xl font-semibold">Knowledge acquired in the internship field</div>
+              <i class="fas fa-book mx-auto w-full text-center text-5xl"></i>
+              <h2 class="text-center text-4xl font-bold text-4xl text-secondary mt-4">{{connaissance}}</h2>
+              <p class="text-center px-4 py-2 text-xl font-semibold">Knowledge acquired in the internship field</p>
 
 
             </div>
-            <div class="bg-secondary rounded-lg py-8 shadow-lg cursor-pointer hover:text-secondary">
-              <h2 class="text-center font-bold text-3xl text-white ">{{ note_totale }}</h2>
+            <div class="bg-secondary rounded-lg py-8 shadow-lg cursor-pointer  px-4">
+              <i class="fas fa-check-square mx-auto w-full text-center text-5xl"></i>
+              <h2 class="text-center text-4xl font-bold  text-white ">{{ note_totale }}</h2>
               <p class="text-center px-4 py-2 text-lg font-medium text-white ">Total Point</p>
 
             </div>
          </div>
         </section>
+
 
 
 </template>

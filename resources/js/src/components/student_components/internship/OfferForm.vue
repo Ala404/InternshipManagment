@@ -1,5 +1,21 @@
 <template>
-  <div class="mx-auto py-4 font-sans text-center">
+<div>
+<div class="mx-auto py-4 font-sans text-center" v-if="accepted">
+        <h1 class="text-2xl font-bold mb-16 text-primary my-auto ">
+            You are enroled in an internship already !
+        </h1>
+        <!-- back button -->
+        <router-link to="/internships" class="flex justify-center">
+            <button
+                class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+               <i class="fas fa-arrow-left"></i> Back
+            </button>
+        </router-link>
+    </div>
+
+
+  <div class="mx-auto py-4 font-sans text-center" v-if="!accepted">
     <h1 class="text-5xl font-bold mb-16 text-primary">
       Internship Application
     </h1>
@@ -88,13 +104,13 @@
         <!-- <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="faculty">
               Faculty
-            </label>    
+            </label>
             <select v-model="profileData[0].faculty" class="block appearance-none w-full bg-white border border-gray-200 text-gray-700
              py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-200"
               id="faculty" aria-selected="Faculty of New Technologys of Communication and Information">
               <option class="text-gray-700 " value="Faculty of New Technologys of Communication and Information"  >
                 Faculty of New Technologys of Communication and Information
-  
+
               </option>
             </select>
             <span class="text-red-500 text-xs italic" v-if="v$.faculty.$error">{{ v$.faculty.$errors[0].$message }} </span>
@@ -168,7 +184,7 @@
 
         <router-link to="/student-profile">
           <button
-            
+
             class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded mt-7"
           >
             Edit
@@ -251,6 +267,8 @@
   </div>
 </transition>
   </div>
+
+  </div>
 </template>
 
 <script>
@@ -291,7 +309,7 @@ export default {
   data() {
     return {
       showConfirmationDialog: false,
-
+        accepted: false,
       departments: [{ name: "ifa" }, { name: "tlsi" }],
       v$: useVuelidate(),
       profileData: [
@@ -323,7 +341,7 @@ export default {
   },
 
   validations: {
-  
+
     date_debut: {
       required,
     },
@@ -334,14 +352,14 @@ export default {
   computed: {
 
 
-  }, 
+  },
 
   methods: {
     showConfirmationDialogFunc() {
       this.showConfirmationDialog = true;
     },
 
-    
+
     validateForm() {
       let cd = new Date().setHours(0, 0, 0, 0);
       const dateDebut = new Date(this.date_debut).setHours(0, 0, 0, 0);
@@ -358,7 +376,7 @@ export default {
       else{
         this.dateDbFError = ''
         console.log(this.dateDbFError);
-        
+
       }
       this.v$.$validate();
       if (!this.v$.$error && this.dateDbFError == '') {
@@ -366,7 +384,7 @@ export default {
         console.log(this.profileData[0].id_etudiant);
         this.submitForm();
       }
-      
+
     },
 
     submitForm() {
@@ -389,7 +407,7 @@ export default {
         });
     },
   },
-  mounted() {
+ async mounted() {
     let id = this.$route.params.id;
     axios
       .post("http://localhost:8000/api/consultStudentAccount", {
@@ -405,6 +423,20 @@ export default {
       .catch((error) => {
         console.log(error);
       });
+
+
+      await axios
+        .post("http://localhost:8000/api/getAcceptedApplications", {
+          id: localStorage.getItem("id"),
+        })
+        .then((response) => {
+          if (response.data.length > 0) {
+            this.accepted = true;
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
 
   },
 };
