@@ -4,6 +4,15 @@ landing page ui
 
 ![LandingPage!](./web-ui/welcome-page.png)
 
+## Website Description
+
+Website Description:
+
+            My "Internify" website is a platform that aims to simplify student applications to different internships offered by various organizations,
+            including universities and internship supervisors. It provides a seamless and efficient application process, allowing students to create and apply directly to existing internships. Furthermore,
+            students can track their attendance and final marks in the skill matrix, enabling them to monitor their progress. Upon completing their internship,
+            students receive a certificate recognizing their accomplishments and the skills they have acquired.
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
