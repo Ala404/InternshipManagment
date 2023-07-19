@@ -4,6 +4,34 @@ landing page ui
 
 ![LandingPage!](./web-ui/welcome-page.png)
 
+Registration :
+
+![internRegis!](./web-ui/internRegis.png)
+
+Creating an Internship Application :
+
+![create-demande!](./web-ui/create-demande.png)
+
+Accepte Application :
+
+![accepteDemandeRes!](./web-ui/accepteDemandeRes.png)
+
+Refuse Application :
+
+![RefuseDemandeChef!](./web-ui/RefuseDemandeChef.png)
+
+Mark a Student :
+
+![Pointage!](./web-ui/Pointage.png)
+
+Register Student Attendance :
+
+![ApsenceREgis!](./web-ui/ApsenceREgis.png)
+
+Generate and Print the Certificate :
+
+![certificateStageLAnscape!](./web-ui/certificateStageLAnscape.png)
+
 ## Website Description
 
 Website Description:

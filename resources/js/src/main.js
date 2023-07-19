@@ -5,7 +5,7 @@ import store from './store'
 //tailwindcss
 import './input.css'
 //fontawesome icons
-import '@fortawesome/fontawesome-free/css/all.css'
+// import '@fortawesome/fontawesome-free/css/all.css'
 //axios
 import axios, { Axios } from 'axios'
 
